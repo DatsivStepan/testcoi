@@ -3,15 +3,17 @@
 <h3 align="center">Інстукця по установці</h3>
 <p>
     <ul>
-        <li>Стаорити базу даних на своєму локльному сервері</li>
-        <li>Якщо немає компосера встановити https://getcomposer.org/download/</li>
-        <li>Якщо немає git встановити https://git-scm.com/downloads</li>
-        <li>Виконати команду https://github.com/DatsivStepan/testcoi.git</li>
+        <li>Стаорити базу даних на своєму локальному сервері</li>
+        <li>Якщо немає компосера, встановити https://getcomposer.org/download/</li>
+        <li>Якщо немає git, встановити https://git-scm.com/downloads</li>
+        <li>Виконати команду <br />
+            <code>git clone https://github.com/DatsivStepan/testcoi.git</code>
+        </li>
         <li>Продублювати і перейменувати файл .env.example на .env, в корні проекту, змінити в цьому файлі налаштування по підключенню до бази даних(створеної в першому пункті)</li>
-        <li>Виконати команду git clone https://github.com/DatsivStepan/testcoi.git</li>
-        <li>Виконати команду composer install</li>
+        <li>Виконати команду <br /> <code>git clone https://github.com/DatsivStepan/testcoi.git</code></li>
+        <li>Виконати команду <br /> <code>composer install</code></li>
         <li>
-            Виконати ряд команд:
+            Виконати ряд команд:<br />
             <code>php artisan key:generate</code><br />
             <code>php artisan migrate</code><br />
             <code>php artisan serve</code><br />
