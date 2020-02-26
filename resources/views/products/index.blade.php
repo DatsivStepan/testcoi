@@ -13,31 +13,37 @@
     </div><br />
     @endif
 
-    @auth
-    <div class="row">
+    <div class="row" style="margin-bottom: 20px">
         <div class="col-sm-12 text-center">
-            <a href="/products/create" class="btn btn-primary">Create</a>
+            @auth
+                <a href="/products/create" class="btn btn-primary">Create</a>
+            @else
+                <a href="/login" class="btn btn-primary">Create</a>
+            @endauth
         </div>
     </div>
-    @endauth
 
     <div class="row">
-        @foreach($products as $product)
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="{{$product->getImage()}}" style="width:100%;height:300px;object-fit: cover;">
-                <div class="caption">
-                    <h3>{{$product->name}}</h3>
-                    <p>{{$product->getPriceByCurr('UAH', true)}}</p>
-                    <p><a href="/products/{{$product->id}}" class="btn btn-primary btn-block">View</a></p>
+        @if ($products) 
+            @foreach($products as $product)
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="{{$product->getImage()}}" style="width:100%;height:300px;object-fit: cover;">
+                    <div class="caption">
+                        <h3>{{$product->name}}</h3>
+                        <p>{{$product->getPriceByCurr('UAH', true)}}</p>
+                        <p><a href="/products/{{$product->id}}" class="btn btn-primary btn-block">View</a></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        @endforeach
-        <div class="clearfix"></div>
-        <div class="col-sm-12">
-            {!! $products->render() !!}
-        </div>
+            @endforeach
+            <div class="clearfix"></div>
+            <div class="col-sm-12">
+                {!! $products->render() !!}
+            </div>
+        @else
+            <div class="col-sm-12">Products not found</div>
+        @endif
     </div>
 </div>
 @endsection

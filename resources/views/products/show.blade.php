@@ -11,13 +11,13 @@
         <h1>
             {{ $product->name }}
             <div class="col-sm-1 float-right">
-                @auth
-                <form action="{{ route('products.destroy', $product->id)}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-                @endauth
+                @if (Auth::id() == $product->user_id)
+                    <form action="{{ route('products.destroy', $product->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                @endif
             </div>
         </h1>
     </div>
@@ -29,7 +29,7 @@
             <div class="col-sm-6">
                 @if ($product->userModel)
                     <div class="alert alert-secondary" role="alert">
-                        {{$product->userModel->name}}
+                        {{$product->userModel->name}} / {{$product->getCreated()}}
                     </div>
                 @endif
                 <ul>

@@ -25,6 +25,15 @@ class Products extends Model
     }
 
     /**
+     * @param string $format
+     * @return string
+     */
+    public function getCreated($format = 'd.m.Y')
+    {
+        return $this->created ? date($format, strtotime($this->created)) : null;
+    }
+
+    /**
      * @param string $curr
      * @param bool $withCurrncy
      * @return int
