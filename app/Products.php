@@ -46,7 +46,7 @@ class Products extends Model
     }
 
     /**
-     * @return App\User model
+     * @return App\User Model
      */
     public function userModel()
     {
@@ -54,7 +54,7 @@ class Products extends Model
     }
 
     /**
-     * @return App\ProductsPrices model
+     * @return App\ProductsPrices Model
      */
     public function pricesModels()
     {
