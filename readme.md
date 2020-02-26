@@ -12,11 +12,9 @@
         <li>Виконати команду composer install</li>
         <li>
             Виконати ряд команд:
-            <code>
-                php artisan key:generate<br />
-                php artisan migrate<br />
-                php artisan serve<br />
-            </code>
+            <code>php artisan key:generate</code><br />
+            <code>php artisan migrate</code><br />
+            <code>php artisan serve</code><br />
         </li>
     </ul>
 </p>
