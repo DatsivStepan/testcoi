@@ -26,7 +26,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::orderBy('created', 'desc')->paginate(9);
+        $products = Products::orderBy('created', 'desc')->paginate(3);
 
         return view('products.index', compact('products'));
     }
@@ -55,6 +55,7 @@ class ProductsController extends Controller
             'img_src' => 'required|image|mimes:jpeg,jpg,png'
         ]);
 
+        $status = false;
         DB::beginTransaction();
 
         try {
@@ -93,14 +94,20 @@ class ProductsController extends Controller
                         $productPrice->save();
                     }
                 }
+                $status = true;
                 DB::commit();
             } else {
-                
+                $status = false;
+                DB::rollback();
             }
 
-            return redirect('/products')->with('success', 'Stock has been added');
         } catch (\Exception $e) {
+            $status = false;
             DB::rollback();
+        }
+        if ($status) {
+            return redirect('/products')->with('success', 'Stock has been added');
+        } else {
             return redirect('/products')->with('error', 'Created error');
         }
     }
